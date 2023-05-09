@@ -9,7 +9,7 @@ import Foundation
 
 extension Frankfurter {
     /// Response data from the API
-    public struct Data: Decodable {
+    public struct Data: Codable, Sendable {
         /// The amount of the base ``Currency`` that the rates compare to
         public let amount: Double
         /// The base currency
@@ -43,7 +43,7 @@ extension Frankfurter {
     }
     
     /// Response data representing a time series from the API
-    public struct TimeSeries: Decodable {
+    public struct TimeSeries: Codable, Sendable {
         /// The amount of the base ``Currency`` that the rates compare to
         public let amount: Double
         /// The base currency
@@ -90,7 +90,7 @@ extension Frankfurter {
     }
     
     /// Supported currencies
-    public enum Currency: String, Hashable, Equatable, Decodable, CaseIterable, CodingKey {
+    public enum Currency: String, Hashable, Equatable, Codable, CaseIterable, CodingKey, Sendable {
         /// Australian Dollar
         case aud = "AUD"
         /// Bulgarian Lev
