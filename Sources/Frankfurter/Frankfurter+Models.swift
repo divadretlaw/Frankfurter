@@ -90,7 +90,7 @@ extension Frankfurter {
     }
     
     /// Supported currencies
-    public enum Currency: String, Hashable, Equatable, Codable, CaseIterable, CodingKey, Sendable {
+    public enum Currency: String, Hashable, Equatable, Codable, CaseIterable, CodingKey, CodingKeyRepresentable, Sendable {
         /// Australian Dollar
         case aud = "AUD"
         /// Bulgarian Lev

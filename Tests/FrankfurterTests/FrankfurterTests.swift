@@ -9,9 +9,19 @@ final class FrankfurterTests: XCTestCase {
         self.frankfurter = Frankfurter()
     }
     
-    func testCodable() async throws {
+    func testDecodable() async throws {
         let json = #"{"amount":1.0,"base":"EUR","date":"2023-04-06","rates":{"AUD":1.6312,"BGN":1.9558,"BRL":5.5096,"CAD":1.4704,"CHF":0.9878,"CNY":7.5014,"CZK":23.409,"DKK":7.451,"GBP":0.87495,"HKD":8.5682,"HUF":376.1,"IDR":16291,"ILS":3.9261,"INR":89.37,"ISK":149.7,"JPY":143.49,"KRW":1438.81,"MXN":19.9624,"MYR":4.8015,"NOK":11.3855,"NZD":1.7387,"PHP":59.562,"PLN":4.6863,"RON":4.9369,"SEK":11.3875,"SGD":1.4507,"THB":37.171,"TRY":21.02,"USD":1.0915,"ZAR":19.8929}}"#
         _ = try Frankfurter.jsonDecoder.decode(Frankfurter.Data.self, from: Data(json.utf8))
+    }
+    
+    func testCodable() async throws {
+        let json = #"{"amount":1.0,"base":"EUR","date":"2023-04-06","rates":{"AUD":1.6312,"BGN":1.9558,"BRL":5.5096,"CAD":1.4704,"CHF":0.9878,"CNY":7.5014,"CZK":23.409,"DKK":7.451,"GBP":0.87495,"HKD":8.5682,"HUF":376.1,"IDR":16291,"ILS":3.9261,"INR":89.37,"ISK":149.7,"JPY":143.49,"KRW":1438.81,"MXN":19.9624,"MYR":4.8015,"NOK":11.3855,"NZD":1.7387,"PHP":59.562,"PLN":4.6863,"RON":4.9369,"SEK":11.3875,"SGD":1.4507,"THB":37.171,"TRY":21.02,"USD":1.0915,"ZAR":19.8929}}"#
+        let data = try Frankfurter.jsonDecoder.decode(Frankfurter.Data.self, from: Data(json.utf8))
+        let encoded = try JSONEncoder().encode(data)
+        if let encodedJson = String(data: encoded, encoding: .utf8) {
+            print(encodedJson)
+        }
+        let decoded = try JSONDecoder().decode(Frankfurter.Data.self, from: encoded)
     }
     
     func testLatest() async throws {

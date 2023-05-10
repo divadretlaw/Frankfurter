@@ -32,11 +32,18 @@ public struct Frankfurter {
         return formatter
     }()
     
-    static var jsonDecoder: JSONDecoder = {
+    public static var jsonDecoder: JSONDecoder = {
         let jsonDecoder = JSONDecoder()
         jsonDecoder.dateDecodingStrategy = .formatted(dateFormatter)
         jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
         return jsonDecoder
+    }()
+    
+    public static var jsonEncoder: JSONEncoder = {
+        let jsonEncoder = JSONEncoder()
+        jsonEncoder.dateEncodingStrategy = .formatted(dateFormatter)
+        jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
+        return jsonEncoder
     }()
     
     /// This endpoint returns the latest rates.
@@ -67,7 +74,7 @@ public struct Frankfurter {
         return try decode(Data.self, from: data, with: response)
     }
     
-    /// This endpoint returns the latest rates.
+    /// This endpoint returns historical rates.
     ///
     ///  - Parameters:
     ///     - date: The date to get historical exchange rates from. Earliest date is 4 January 1999.
@@ -97,7 +104,7 @@ public struct Frankfurter {
         return try decode(Data.self, from: data, with: response)
     }
     
-    /// This endpoint returns the latest rates.
+    /// This endpoint returns a time series of rates.
     ///
     ///  - Parameters:
     ///     - range: The date range to get historical exchange rates from. Earliest date is 4 January 1999.
@@ -127,7 +134,7 @@ public struct Frankfurter {
         return try decode(TimeSeries.self, from: data, with: response)
     }
     
-    /// This endpoint returns the latest rates.
+    /// This endpoint returns a time series of rates.
     ///
     ///  - Parameters:
     ///     - range: The date range to get historical exchange rates from. Earliest date is 4 January 1999.
