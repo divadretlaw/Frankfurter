@@ -224,6 +224,74 @@ extension Frankfurter {
                 return rawValue
             }
         }
+        
+        /// The country emoji of the ``Currency``
+        public var emoji: String {
+            switch self {
+            case .aud:
+                return "🇦🇺"
+            case .bgn:
+                return "🇧🇬"
+            case .brl:
+                return "🇧🇷"
+            case .cad:
+                return "🇨🇦"
+            case .chf:
+                return "🇨🇭"
+            case .cny:
+                return "🇨🇳"
+            case .czk:
+                return "🇨🇿"
+            case .dkk:
+                return "🇩🇰"
+            case .eur:
+                return "🇪🇺"
+            case .gbp:
+                return "🇬🇧"
+            case .hkd:
+                return "🇭🇰"
+            case .huf:
+                return "🇭🇺"
+            case .idr:
+                return "🇮🇩"
+            case .ils:
+                return "🇮🇱"
+            case .inr:
+                return "🇮🇳"
+            case .isk:
+                return "🇮🇸"
+            case .jpy:
+                return "🇯🇵"
+            case .krw:
+                return "🇰🇷"
+            case .mxn:
+                return "🇲🇽"
+            case .myr:
+                return "🇲🇾"
+            case .nok:
+                return "🇳🇴"
+            case .nzd:
+                return "🇳🇿"
+            case .php:
+                return "🇵🇭"
+            case .pln:
+                return "🇵🇱"
+            case .ron:
+                return "🇷🇴"
+            case .sek:
+                return "🇸🇪"
+            case .sgd:
+                return "🇸🇬"
+            case .thb:
+                return "🇹🇭"
+            case .try:
+                return "🇹🇷"
+            case .usd:
+                return "🇺🇸"
+            case .zar:
+                return "🇿🇦"
+            }
+        }
     }
     
     struct DateKey: CodingKey {

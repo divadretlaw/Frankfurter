@@ -21,7 +21,7 @@ final class FrankfurterTests: XCTestCase {
         if let encodedJson = String(data: encoded, encoding: .utf8) {
             print(encodedJson)
         }
-        let decoded = try JSONDecoder().decode(Frankfurter.Data.self, from: encoded)
+        _ = try JSONDecoder().decode(Frankfurter.Data.self, from: encoded)
     }
     
     func testLatest() async throws {
