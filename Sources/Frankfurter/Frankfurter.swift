@@ -8,7 +8,7 @@
 import Foundation
 
 /// The Frankfurter API tracks foreign exchange references rates published by the European Central Bank. The data refreshes around 16:00 CET every working day.
-public struct Frankfurter {
+public struct Frankfurter: Sendable {
     private let session: URLSession
     private let host: URLComponents
     

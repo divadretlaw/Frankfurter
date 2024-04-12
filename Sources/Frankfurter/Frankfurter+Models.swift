@@ -294,7 +294,7 @@ extension Frankfurter {
         }
     }
     
-    struct DateKey: CodingKey {
+    struct DateKey: CodingKey, Sendable {
         let date: Date
         
         init?(stringValue: String) {
